@@ -1,0 +1,17 @@
+version: "3"
+services:
+  postgres-ems:
+    image: postgres:14-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: ems
+      POSTGRES_HOST_AUTH_METHOD: trust
+    networks:
+      - database_postgres
+
+networks:
+  database_postgres:
+    driver: bridge
