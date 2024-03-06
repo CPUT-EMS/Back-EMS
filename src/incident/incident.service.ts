@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { CreateIncidentDto } from './dto/create-incident.dto';
 import { UpdateIncidentDto } from './dto/update-incident.dto';
+import {Incident} from "./entities/incident.entity";
+import {Repository} from "typeorm";
 
 @Injectable()
 export class IncidentService {
+  constructor(
+      @InjectRepository(Incident)
+      private usersRepository: Repository<Incident>,
+  ) {}
   create(createIncidentDto: CreateIncidentDto) {
     return 'This action adds a new incident';
   }

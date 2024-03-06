@@ -1,76 +1,45 @@
-import {Entity, Column, PrimaryGeneratedColumn} from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, OneToMany} from "typeorm";
+import {IncidentTime} from "../../incident-time/entities/incident-time.entity";
+import {IncidentCare} from "../../incident-care/entities/incident-care.entity";
+import {IncidentPractitioner} from "../../incident-practitioners/entities/incident-practitioner.entity";
 
 @Entity({name: 'incident'})
-export class Incident {
+export class Incident extends BaseEntity{
     @PrimaryGeneratedColumn()
-    id: number;
+    ID_INCIDENT: number;
 
-    @Column()
+    @Column({length: 100})
     vehiculeCallSign: string;
 
-    @Column()
+    @Column({length: 100})
     prfNumber: string;
 
-    @Column()
-    DispatchedBy: string;
+    @Column({length: 100})
+    dispatchedBy: string;
 
     @Column()
     dateCall: Date;
 
-    @Column()
+    @Column({length: 100})
     callCentreNo: string;
 
-    @Column()
-    timeArrival: Date;
-
-    @Column()
-    timeDispatched: Date;
-
-    @Column()
-    timeArrivalOnScene: Date;
-
-    @Column()
-    timeMobileToHosp: Date;
-
-    @Column()
-    triagePriority: string;
-
-    @Column()
-    levelOfCare: string;
-
-    @Column()
-    timeAvailable: Date;
-
-    @Column()
+    @Column({length: 100})
     incidentLocation: string;
 
-    @Column()
+    @Column({length: 100})
     transportedTo: string;
 
-    @Column()
+    @Column({length: 100})
     category: string;
 
-    @Column()
-    practitioner1Surname: string;
+    @OneToMany(() => IncidentTime, (incidentTime) => incidentTime.incident)
+    incidentTimes: IncidentTime[];
 
-    @Column()
-    practitioner2Surname: string;
+    @OneToMany(() => IncidentCare, (incidentCare) => incidentCare.incident)
+    incidentCare: IncidentCare[];
 
-    @Column()
-    practitioner3Surname: string;
-
-    @Column()
-    practitioner4Surname: string;
-
-    @Column()
-    HPCSA1: string;
-
-    @Column()
-    HPCSA2: string;
-
-    @Column()
-    HPCSA3: string;
-
-    @Column()
-    HPCSA4: string;
+    @OneToMany(() => IncidentPractitioner, (incidentPractitioners) => incidentPractitioners.incident)
+    incidentPractitioners: IncidentPractitioner[];
 }
+
+
