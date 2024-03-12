@@ -3,11 +3,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { databaseConfig } from './database.config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-import { Incident } from '../../incident/entities/incident.entity';
-import {IncidentTime} from "../../incident-time/entities/incident-time.entity";
-import {IncidentCare} from "../../incident-care/entities/incident-care.entity";
-import {IncidentPractitioner} from "../../incident-practitioners/entities/incident-practitioner.entity";
-import {Practitioner} from "../../practitioners/entities/practitioner.entity";
+import {IncidentInformation} from "../../incident-informations/entities/incident-information.entity";
+import {InputBodySecondarySurvey} from "../../input-body-secondary-survey/entities/input-body-secondary-survey.entity";
+import {MedicalsAdministred} from "../../medicals-administred/entities/medicals-administred.entity";
+import {VitalObservation} from "../../vital-observations/entities/vital-observation.entity";
+
 
 @Module({
     imports: [
@@ -22,7 +22,7 @@ import {Practitioner} from "../../practitioners/entities/practitioner.entity";
                 synchronize: true, // Use migration instead
                 namingStrategy: new SnakeNamingStrategy(),
                 logging: ['error'],
-                entities:[Incident, IncidentTime, IncidentCare, IncidentPractitioner, Practitioner]
+                entities:[IncidentInformation, InputBodySecondarySurvey, MedicalsAdministred, VitalObservation]
             }),
         }),
     ],

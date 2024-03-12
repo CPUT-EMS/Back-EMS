@@ -1,21 +1,21 @@
 import { Module } from '@nestjs/common';
 import {ConfigModule} from "@nestjs/config";
 import {DatabaseModule} from "./shared/database/database.module";
-import { IncidentTimeModule } from './incident-time/incident-time.module';
-import { BaseEntityModule } from './base-entity/base-entity.module';
-import { IncidentCareModule } from './incident-care/incident-care.module';
-import { IncidentPractitionersModule } from './incident-practitioners/incident-practitioners.module';
-import { PractitionersModule } from './practitioners/practitioners.module';
+import { IncidentInformationsModule } from './incident-informations/incident-informations.module';
+import { InputBodySecondarySurveyModule } from './input-body-secondary-survey/input-body-secondary-survey.module';
+import { VitalObservationsModule } from './vital-observations/vital-observations.module';
+import { MedicalsAdministredModule } from './medicals-administred/medicals-administred.module';
+
 
 @Module({
   imports: [
       DatabaseModule,
       ConfigModule.forRoot(),
-      IncidentTimeModule,
-      BaseEntityModule,
-      IncidentCareModule,
-      IncidentPractitionersModule,
-      PractitionersModule,
+      IncidentInformationsModule,
+      InputBodySecondarySurveyModule,
+      VitalObservationsModule,
+      MedicalsAdministredModule,
+
 
   ],
 })
