@@ -9,8 +9,13 @@ import {Repository} from "typeorm";
 export class IncidentInformationsService {
   constructor(
       @InjectRepository(IncidentInformation)
-        private usersRepository: Repository<IncidentInformation>,
+        private incidentInformationRepository: Repository<IncidentInformation>,
   ) {
+  }
+
+  async createForm(createIncidentInformationDto: CreateIncidentInformationDto) {
+    const newIncidentInformation = this.incidentInformationRepository.create(createIncidentInformationDto);
+    return await this.incidentInformationRepository.save(createIncidentInformationDto);
   }
   create(createIncidentInformationDto: CreateIncidentInformationDto) {
     return 'This action adds a new incidentInformation';

@@ -11,8 +11,11 @@ export class VitalObservation {
     @Column({length: 100})
     pusleRate: string;
 
-    @Column({length: 100})
-    pulseRegularity: string;
+    @Column()
+    pulseRegularityReg: boolean;
+
+    @Column()
+    pulseRegularityIrreg: boolean;
 
     @Column({length: 100})
     ecgRate: string;

@@ -54,7 +54,7 @@ export class IncidentInformation {
     practitionerSurname1: string;
 
     @Column({length: 100})
-    HPCSA1: string;
+        HPCSA1: string;
 
     @Column({length: 100})
     practitionerSurname2: string;
@@ -301,6 +301,9 @@ export class IncidentInformation {
 
     @Column({length: 100})
     pmhInput5: string;
+
+    @Column({length: 100})
+    pmhInput6: string;
 
     @Column()
     meal: boolean;
